@@ -31,3 +31,6 @@
 .navbar-container
   width: 1256px !important
 }*/
+
+@import url("fonts/recvolt-icons/style.css");
+@import url("fonts/recvolt-icons/ie7/ie7.css");

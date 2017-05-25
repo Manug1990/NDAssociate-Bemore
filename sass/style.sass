@@ -18,7 +18,10 @@ $dark-red : #dd4b39
 $text-green : #00a65a
 $light-smoke-bg : #f2f2f2
 $dollar-color :#414042
-$container-width :1256px
+$container-width :1240px
+$section-container :1000px
+$green-color :#00a651
+$very-light-smoke :#fbfbfb
 body.slide-active 
   overflow-x: hidden
 .no-margin-top 
@@ -42,17 +45,35 @@ body.slide-active
 
 .navbar-inverse .navbar-brand 
   color: $primary-color 
-    
+
+.badge-notify 
+  background: $dark-red
+  position: absolute
+  top: 2px
+  left: 50px
+.badge 
+  display: inline-block
+  min-width: 10px
+  padding: 3px 6px
+  font-size: 12px
+  font-weight: 700
+  line-height: 1
+  color: #fff
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  border-radius: 10px
+
 .navbar-inverse
   background-color: $sky-blue
   border-color: $sky-blue
 .header-img
-  width: 45px
-  height: 45px
+  width: 38px
+  height: 38px
   border-radius: 50%
   margin-right: -25px
-  margin-top: -10px
-  margin-left: 15px
+  margin-top: 9px
+  margin-left: 0px
 .search
   letter-spacing: 2px
   font-size: 15px
@@ -86,18 +107,23 @@ body.slide-active
   margin: 5px 0 0 0
 .nav-ul li a 
   padding-top: 10px !important
-  padding-bottom: 10px !important
+  padding-bottom: 0px !important
   line-height: 20px
-
+.nav-ul
+  padding-top: 8px
+  padding-bottom: 8px
 .navbar.navbar-fixed-top.slide-active 
   @extend .navbar-header
     
 .sec-name
   margin-top: 8px
 
- 
+.white-color
+  color: $primary-color !important
+
 .notification-smallimg 
   @extend .sec-name
+  @extend .white-color
   margin-bottom: 0px
   font-size: 20px !important
 
@@ -106,8 +132,9 @@ body.slide-active
   display: inline-block !important
   padding: 10px 15px
 .left-inner-addon
-  margin-top: 5px
-
+  margin-top: 3px
+.down-icon
+  padding-right: 10px    
 input[type="search"]::-webkit-input-placeholder 
   color: $primary-color
 
@@ -183,22 +210,26 @@ input[type="search"]::-webkit-input-placeholder
   /*padding-left: 18px*/
 section .section-hedding
   @extend .letter-spacing
-  font-weight: 400
-  font-family: $font-bebasneue
+  font-weight: 600
+  font-family: $font-roboto
   color: $hedding-color
   margin-bottom: 30px
   font-size: 28px
 
-.margin-left-15
-  margin-left: 15%
-
+.section-container
+  width: $section-container
+  float: right
+  max-width: $section-container
 .col-md-10.ls
   padding-top: 10px
 
 .col-md-10.ls p
   @extend .col-md-10.ls 
- 
-
+.margin-top-25
+  margin-top: 25px
+.hr
+  margin-right: -15px
+  margin-left: -15px
 
 section .answer
   @extend .letter-spacing
@@ -231,15 +262,15 @@ section .answer
 
 
 .google-img
-  margin-top: -66px
-  margin-bottom: 59px
+  margin-top: -22px
+  margin-bottom: 55px
 
 .employer-rating 
-  background: $light-smoke-bg
+  background: $very-light-smoke
   padding-top: 32px
   padding-bottom: 20px
   margin-top: 10px
-  margin-left: 0px
+  
 .panel-default>.panel-heading 
   color: $label-color
   background: none !important
@@ -262,7 +293,7 @@ a:hover, a:focus
 
 .accordian-icon 
   text-align: center
-  padding-top: 30px
+  padding-bottom: 10px
 
 .add-job 
   @extend .letter-spacing
@@ -297,26 +328,26 @@ section .p-content
   display: inline-block
   background-repeat: no-repeat !important
 
+ 
 .edit-icon
-  @extend .same-icon
-  background: url(../img/icons/edit_30.png)
-  height: 20px
-  width: 30px
-  background-size: 20px 20px
+  margin-right: 10px
   
-.down-arrow
-  @extend .same-icon
-  background: url(../img/icons/dwn-arw-thin_40.png)
-  height: 20px
-  width: 20px
-  background-size: contain
+.box-footer .accordion-toggle:after 
+  font-family: recvolt-icons
+  content: "\e90e"         
+  color: $paragraph-color 
+ 
+   
+.box-footer .accordion-toggle.collapsed:after  
+  content: "\e90d"   
+.panel-collapse.collapse.in + footer a.accordion-toggle:after 
+  content: "\e90d"
 
-.lock-icon
-  @extend .same-icon 
-  background: url(../img/icons/lock_40.png)
-  height: 20px
-  width: 20px
-  background-size: 20px 20px
+.panel-collapse.collapse + footer a.accordion-toggle:after 
+  content: "\e90e"
+
+
+
 .dollar-icon
   @extend .same-icon
   background: url(../img/icons/dallar40.png)
@@ -326,55 +357,29 @@ section .p-content
   margin-bottom: -10px
 
 .emp-rating
-  @extend .same-icon
-    
-  background: url(../img/icons/Tick-circle_40.png)
-  height: 25px
-  width: 25px 
-  background-size: 25px 25px
+  font-size: 20px !important
+  margin-top: 0px
 
-.interview-stages
-  @extend .same-icon
-  background: url(../img/icons/6-circle_40.png)
-  height: 25px
-  width: 25px 
-  background-size: 25px 25px  
+.icon-6
+  font-size: 20px !important
+  margin-top: 0px
 
 .down-icon
-  @extend .same-icon
-  background: url(../img/icons/down_arw.png)
-  height: 13px
-  width: 20px   
-  background-size: 12px 15px
+  @extend .white-color
 
 .up-icon
-  @extend .same-icon
-  background: url(../img/icons/up_arw.png)
-  height: 15px
-  width: 15px    
-  background-size: 15px 15px
-
+  @extend .white-color
+  -webkit-transform: rotate(-180deg)
+  display: inline-block
 .search-icon
-  @extend .same-icon
-  background: url(../img/icons/search_40.png)
-  height: 20px
-  width: 20px  
-  background-size: contain  
-  position: relative
-  top: 5px
-.notification
-  @extend .same-icon
-  background: url(../img/icons/notify_number.png)
-  height: 20px
-  width: 20px  
-  background-size: 20px 20px  
+  @extend .vertical-align
+  @extend .white-color    
+  font-size: 18px !important
+.navbar-nav> .sec-name
+  margin: 0px
 
-.calendar
-  @extend .same-icon
-  background: url(../img/icons/Calendar.png)
-  height: 25px
-  width: 52px  
-  background-size: 20px 20px
+
+
 
 .in-icon
   @extend .same-icon
@@ -394,11 +399,13 @@ section .p-content
     
 
 .facebook
-  @extend .same-icon
-  background: url(../img/icons/fb_40.png)
-  height: 20px
-  width: 20px  
-  background-size: 20px 20px
+  height: 22px
+  width: 22px  
+  background: $paragraph-color
+  border-radius: 50%
+  text-align: center
+  padding-top: 5px
+  color: $primary-color
   margin-left: 15px
 .social-icons
   width: 100%
@@ -413,18 +420,19 @@ section .box-hedding
   @extend .letter-spacing
   font-family: $font-roboto
   color: $paragraph-color
-  font-weight: 400
-
+  font-weight: 600
+section .normal-heading
+  font-size: 17px
 
 .emp-hedding
   font-size: 14px
   margin-left: 5px
 
 .emp-interview
-  margin-left: 5px
-  letter-spacing: 1px
+  @extend .letter-spacing
+  margin-left: 4px
   font-family: $font-roboto
-  color: $paragraph-color
+  color: $label-color
   font-size: 15px
 .col-md-3.lc
   display: inline-flex
@@ -433,6 +441,7 @@ section .box-hedding
 .col-md-3.lb
   display: inline-flex
   width: 19% !important
+  padding-left: 0px
 
 .company-bg
   background: $darkblue-bg !important
@@ -488,12 +497,15 @@ ul.rating
 .box-answer
   color: $label-color
   font-family: $font-roboto
+  @extend .letter-spacing
 .dollar-number
   @extend .box-answer
   font-size: 16px
   color: $dollar-color !important
-.panel-title
-  margin-left: 10px
+  position: relative
+  top: -3px
+.vertical-align
+  vertical-align: middle
 .profile-table
   margin-bottom: 50px
 .intermediate
@@ -515,15 +527,29 @@ ul.rating
   margin-left: 26px
 .search-form
   width: 50% !important
+  margin-left: 15px
+.margin-left-40
+  margin-left: 40px !important
 .search
   width: 90% !important
 .location
   margin-top: 5px
 
-
-    
+.box-panel:hover
+  box-shadow: 0px 0px 20px 0px $paragraph-color !important
+.star-rating
+  @extend .letter-spacing
+  margin: 0
+  padding: 0
+  display: inline-block
+  color: $light-smoke-bg 
+  
+.filled 
+  color: $dark-red
+.table>tbody>tr>th
+  border-top: 0px solid !important  
 .profile-table>tbody>tr>td
-  border-top: 0px solid #ddd
+  border-top: 0px solid !important
 .company-star
   padding-left: 20px 
 @media screen and (min-width: 1200px)
@@ -533,7 +559,6 @@ ul.rating
     width: $container-width !important
   .footer-container
     width: $container-width !important
-
-
-
+  
+    
 	

@@ -12,10 +12,12 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
+    <link href="fonts/ie7/ie7.css" rel="stylesheet">
+    <link href="fonts/recvolt-icons/style.css" rel="stylesheet">
     <meta charset=utf-8 />
     <title>RECVOLT</title>
 </head>
-<body ng-app="myApp" ng-controller="profileController">
+<body ng-app="myApp" ng-controller="profileController as rating">
      <nav class="navbar navbar-inverse navbar-fixed-top company-bg" role="navigation">
         <div class="container navbar-container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,25 +28,27 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                   </button>
-                 <a class="navbar-brand" href="#"><img src="img/icons/Nav%20Logo.png" width="100" height="35" style="margin-top: -7px;"></a>
+                 <a class="navbar-brand" href="#"><img src="img/icons/Nav%20Logo.png" width="100"  style="margin-top: -3px;"></a>
             </div>
           <form class="navbar-form navbar-left" role="form">
-                <div class="form-group search-form">
+            <div class="form-group search-form">
                     <div class="left-inner-addon">
-                        <span class="search-icon"></span>
-                           <input type="search"class="form-control search" placeholder="Search for people, jobs" />
+                        <span class="icon-search search-icon"></span>
+                           <input type="search" class="form-control search" placeholder="Search for people, jobs" />
                     </div>
                 </div>
-               <button type="button" class="btn add-job">Add a job</button>
           </form>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                 <ul class="nav navbar-nav pull-right nav-ul">
-                        <li>
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                 <ul class="nav navbar-nav  nav-ul">
+                        <li class="top">
                             <a href="#" >
-                                <span class="down-icon"></span>
-                                <span class="notification-smallimg notification"></span>
+                                <span class="icon-down-arrow down-icon"></span>
+                                <span class="icon-notification-bell notification-smallimg" ></span>
+                                
                             </a>
+                             <span class="badge badge-notify">7</span>
+                            
                             <ul class="dropdown-menu" style="display:none;">
                                  <li class="header">You have 5 notifications</li>
                                   <li class="sub-li">
@@ -85,45 +89,47 @@
                               <li class="footer"><a href="#">View all</a></li>
                             </ul>
                       </li>
-                    <li>
+                    <li class="top">
                         <a href="#">
-                            <span class="calendar notification-smallimg"></span>
+                            
+                            <span class="icon-calendar notification-smallimg" ></span>
                         </a>
                     </li>
-                 <li class="sec-name"><a href="#contact"><span>Welcome back John Doe</span> <span class="up-icon icon" ></span><img src="img/doe.png" class="header-img"> </a></li>
+                 <li class="sec-name"><a href="#contact"><span>Welcome back John Doe</span>
+                     <span class="icon-up-arrow icon up-icon" ></span>
+                      </a>
+                     
+                     </li>
+                     
                 </ul>
+            <img src="img/doe.png" class="header-img">
              </div><!-- /.navbar-collapse -->
         </div>
 </nav>
   <!--wrap the page content do not style this-->
  <div id="page-content">
   <div class="container main-container" >
-            <section class="margin-left-15">
+            <section class="section-container">
                 <div class="row">
                     <div class="col-md-8">
                         <h3 class="section-hedding">COMPANY PROFILE</h3>
                     </div>
                 </div>
-                 <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-10">
-                      <span class="emp-rating"></span> <span class="answer google-inc">Google Inc.</span>
-                    </div>
-                </div>
+                
                 <div class="row profile-row">
                     <div class="col-md-2">
                         <img src="img/google-brand-logo.png" class="google-img" width="150">
                             <p class="star">Rating</p>
                         <div class=" lead">
-                            <span ng-repeat="rating in ratings">
-                                <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
-                                <span class="span-rating">{{rating.current}}  </span><span class="span-rating rating-number">(based on 1232121 ratings)</span>
-                            </span>
+                            
+                                 <div star-rating ng-model="rating.rating1" max="5" on-rating-select="rating.rateFunction(rating)"></div>
+                                <span class="span-rating">{{rating.rating1}}  </span><span class="span-rating rating-number">(based on 1232121 ratings)</span>
+                            
                         </div>
                      </div>
                     <div class="col-md-10 ls">
-                        <div class="row">
+                         <span class="icon-check-sign emp-rating" ></span><span class="answer google-inc">Google Inc.</span>
+                        <div class="row     margin-top-25">
                             <div class="col-md-6">
                                 <span class="language">Address</span>
                                 <p class="answer angeles">1600 Ampitheatre Pkwy,Mountain View CA 94043, USA</p>
@@ -139,14 +145,14 @@
                         </p>
                     </div>
                 </div>
-                <hr>
+             <hr class="hr">
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="section-hedding">VACANCIES IN GOOGLE  (4)</h3>
                     </div>
                 </div>
                 <div class="row">
-                <div class="panel panel-default">
+                <div class="panel panel-default box-panel">
                     <div class="panel-heading">
                       <div class="panel-title">
                          <div class="box-border">
@@ -155,30 +161,30 @@
                                     <h4 class="box-hedding">IT Department Director</h4>
                                 </div>
                                 <div class="col-md-4">
-                                     <span class=" pull-right lock-icon" ></span><span class=" pull-right edit-icon" ></span>
+                                     <span class=" pull-right lock-icon icon-lock" ></span><span class=" pull-right edit-icon icon-edit" ></span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h5 class="answer">Albania, Tirane</h5>
+                                    <h5 class="answer normal-heading">Albania, Tirane</h5>
                                 </div>
-                                <div class="col-md-5">
-                                    <h5 class="answer">Created 10/10/2015 - Starting 10/10/2015</h5>
+                                <div class="col-md-6">
+                                    <h5 class="answer normal-heading">Created 10/10/2015 - Starting 10/10/2015</h5>
                                 </div> 
-                                <div class="col-md-4">
-                                    <p class=" pull-right"><span class="dollar-icon"></span><span class="dollar-number">400,800 EUR</span></p>
+                                <div class="col-md-3">
+                                    <div class=" pull-right"><span class="icon-dollar"></span> <span class="dollar-number">400,800 EUR</span></div>
                                 </div>
                             </div>
                             <div class="row employer-rating">
                                 <div class="col-md-3 lc">
-                                  <span class="emp-rating"></span> <span class="answer emp-hedding">Employer rating</span> 
-                                    <span ng-repeat="rating in ratings">
-                                     <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                                        <span class="span-rating company-star">{{rating.current}}</span>
-                                    </span>
+                                  <span class="icon-check-sign emp-rating" ></span> <span class="answer emp-hedding">Employer rating</span> 
+                                    
+                                     <span star-rating ng-model="rating.ratingbox1" max="5" on-rating-select="rating.rateFunction(rating)"></span>
+                                        <span class="span-rating company-star">{{rating.ratingbox1}} </span>
+                                    
                                 </div>
                                 <div class="col-md-3 lb">
-                                    <span class="interview-stages"></span>   <span class="emp-interview">Interview Stages</span>
+                                    <span class="icon-6 "><span class="path1"></span><span class="path2"></span></span>   <span class="emp-interview">Interview Stages</span>
                                 </div>
                                 <div class="col-md-4">
                                     <span class="answer ">Distribution</span>:<span class="box-answer"> 4 Recruiters, 122 CVs</span>
@@ -189,22 +195,26 @@
                                 </div>
                             </div>
                            </div>
-                            <div class="row">
-                                <div class="accordian-icon ">
-                                    <a class="accordion-toggle down-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"></a>
-                                </div>
-                            </div>
                       </div>
                     </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
+                    <div id="collapseOne" class="panel-collapse collapse">
                       <div class="panel-body">
                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                       </div>
+                        
                     </div>
+                    <footer class="box-footer">
+                    <div class="row">
+                                <div class="accordian-icon ">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseOne"></a>
+                                </div>
+                            </div>
+                    </footer>
+                    
                 </div>
                 </div>
                 <div class="row">
-                <div class="panel panel-default">
+                <div class="panel panel-default box-panel">
                     <div class="panel-heading">
                       <div class="panel-title">
                          <div class="box-border">
@@ -213,30 +223,30 @@
                                     <h4 class="box-hedding">IT Department Director</h4>
                                 </div>
                                 <div class="col-md-4">
-                                     <span class=" pull-right lock-icon" ></span><span class=" pull-right edit-icon" ></span>
+                                     <span class=" pull-right lock-icon icon-lock" ></span><span class=" pull-right edit-icon icon-edit" ></span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h5 class="answer">Albania, Tirane</h5>
+                                    <h5 class="answer normal-heading">Albania, Tirane</h5>
                                 </div>
-                                <div class="col-md-5">
-                                    <h5 class="answer">Created 10/10/2015 - Starting 10/10/2015</h5>
+                                <div class="col-md-6">
+                                    <h5 class="answer normal-heading">Created 10/10/2015 - Starting 10/10/2015</h5>
                                 </div> 
-                                <div class="col-md-4">
-                                    <p class=" pull-right"><span class="dollar-icon"></span><span class="dollar-number">400,800 EUR</span></p>
+                                <div class="col-md-3">
+                                    <div class=" pull-right"><span class="icon-dollar"></span> <span class="dollar-number">400,800 EUR</span></div>
                                 </div>
                             </div>
                             <div class="row employer-rating">
                                 <div class="col-md-3 lc">
-                                  <span class="emp-rating"></span> <span class="answer emp-hedding">Employer rating</span> 
-                                    <span ng-repeat="rating in ratings">
-                                     <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                                        <span class="span-rating company-star">{{rating.current}}</span>
-                                    </span>
+                                  <span class="icon-check-sign emp-rating" ></span> <span class="answer emp-hedding">Employer rating</span> 
+                                    
+                                     <span star-rating ng-model="rating.ratingbox1" max="5" on-rating-select="rating.rateFunction(rating)"></span>
+                                        <span class="span-rating company-star">{{rating.ratingbox1}} </span>
+                                    
                                 </div>
                                 <div class="col-md-3 lb">
-                                    <span class="interview-stages"></span>   <span class="emp-interview">Interview Stages</span>
+                                    <span class="icon-6 "><span class="path1"></span><span class="path2"></span></span>   <span class="emp-interview">Interview Stages</span>
                                 </div>
                                 <div class="col-md-4">
                                     <span class="answer ">Distribution</span>:<span class="box-answer"> 4 Recruiters, 122 CVs</span>
@@ -247,80 +257,26 @@
                                 </div>
                             </div>
                            </div>
-                            <div class="row">
-                                <div class="accordian-icon ">
-                                    <a class="accordion-toggle down-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"></a>
-                                </div>
-                            </div>
                       </div>
                     </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
+                    <div id="collapseTwo" class="panel-collapse collapse">
                       <div class="panel-body">
                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                       </div>
+                        
                     </div>
-                </div>
-                </div>
-                  <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <div class="panel-title">
-                         <div class="box-border">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h4 class="box-hedding">IT Department Director</h4>
-                                </div>
-                                <div class="col-md-4">
-                                     <span class=" pull-right lock-icon" ></span><span class=" pull-right edit-icon" ></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h5 class="answer">Albania, Tirane</h5>
-                                </div>
-                                <div class="col-md-5">
-                                    <h5 class="answer">Created 10/10/2015 - Starting 10/10/2015</h5>
-                                </div> 
-                                <div class="col-md-4">
-                                    <p class=" pull-right"><span class="dollar-icon"></span><span class="dollar-number">400,800 EUR</span></p>
-                                </div>
-                            </div>
-                            <div class="row employer-rating">
-                                <div class="col-md-3 lc">
-                                  <span class="emp-rating"></span> <span class="answer emp-hedding">Employer rating</span> 
-                                    <span ng-repeat="rating in ratings">
-                                     <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                                        <span class="span-rating company-star">{{rating.current}}</span>
-                                    </span>
-                                </div>
-                                <div class="col-md-3 lb">
-                                    <span class="interview-stages"></span>   <span class="emp-interview">Interview Stages</span>
-                                </div>
-                                <div class="col-md-4">
-                                    <span class="answer ">Distribution</span>:<span class="box-answer"> 4 Recruiters, 122 CVs</span>
-                                </div>
-                                <div class="col-md-2">
-                                    <p class=" pull-right "> <span class="answer" style="margin-left: -5px;">Last Activity</span>:  <span class="box-answer" style="letter-spacing: 1px;font-size: 15px;">2d</span>
-                                    </p>
-                                </div>
-                            </div>
-                           </div>
-                            <div class="row">
+                    <footer class="box-footer">
+                    <div class="row">
                                 <div class="accordian-icon ">
-                                    <a class="accordion-toggle down-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"></a>
                                 </div>
                             </div>
-                      </div>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                      </div>
-                    </div>
+                    </footer>
+                    
                 </div>
                 </div>
                  <div class="row">
-                <div class="panel panel-default">
+                <div class="panel panel-default box-panel">
                     <div class="panel-heading">
                       <div class="panel-title">
                          <div class="box-border">
@@ -329,30 +285,30 @@
                                     <h4 class="box-hedding">IT Department Director</h4>
                                 </div>
                                 <div class="col-md-4">
-                                     <span class=" pull-right lock-icon" ></span><span class=" pull-right edit-icon" ></span>
+                                     <span class=" pull-right lock-icon icon-lock" ></span><span class=" pull-right edit-icon icon-edit" ></span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h5 class="answer">Albania, Tirane</h5>
+                                    <h5 class="answer normal-heading">Albania, Tirane</h5>
                                 </div>
-                                <div class="col-md-5">
-                                    <h5 class="answer">Created 10/10/2015 - Starting 10/10/2015</h5>
+                                <div class="col-md-6">
+                                    <h5 class="answer normal-heading">Created 10/10/2015 - Starting 10/10/2015</h5>
                                 </div> 
-                                <div class="col-md-4">
-                                    <p class=" pull-right"><span class="dollar-icon"></span><span class="dollar-number">400,800 EUR</span></p>
+                                <div class="col-md-3">
+                                    <div class=" pull-right"><span class="icon-dollar"></span> <span class="dollar-number">400,800 EUR</span></div>
                                 </div>
                             </div>
                             <div class="row employer-rating">
                                 <div class="col-md-3 lc">
-                                  <span class="emp-rating"></span> <span class="answer emp-hedding">Employer rating</span> 
-                                    <span ng-repeat="rating in ratings">
-                                     <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                                        <span class="span-rating company-star">{{rating.current}}</span>
-                                    </span>
+                                  <span class="icon-check-sign emp-rating" ></span> <span class="answer emp-hedding">Employer rating</span> 
+                                    
+                                     <span star-rating ng-model="rating.ratingbox1" max="5" on-rating-select="rating.rateFunction(rating)"></span>
+                                        <span class="span-rating company-star">{{rating.ratingbox1}} </span>
+                                    
                                 </div>
                                 <div class="col-md-3 lb">
-                                    <span class="interview-stages"></span>   <span class="emp-interview">Interview Stages</span>
+                                    <span class="icon-6 "><span class="path1"></span><span class="path2"></span></span>   <span class="emp-interview">Interview Stages</span>
                                 </div>
                                 <div class="col-md-4">
                                     <span class="answer ">Distribution</span>:<span class="box-answer"> 4 Recruiters, 122 CVs</span>
@@ -363,18 +319,84 @@
                                 </div>
                             </div>
                            </div>
-                            <div class="row">
-                                <div class="accordian-icon ">
-                                    <a class="accordion-toggle down-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"></a>
-                                </div>
-                            </div>
                       </div>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse">
                       <div class="panel-body">
                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                       </div>
+                        
                     </div>
+                    <footer class="box-footer">
+                    <div class="row">
+                                <div class="accordian-icon ">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseThree"></a>
+                                </div>
+                            </div>
+                    </footer>
+                    
+                </div>
+                </div>
+                <div class="row">
+                <div class="panel panel-default box-panel">
+                    <div class="panel-heading">
+                      <div class="panel-title">
+                         <div class="box-border">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h4 class="box-hedding">IT Department Director</h4>
+                                </div>
+                                <div class="col-md-4">
+                                     <span class=" pull-right lock-icon icon-lock" ></span><span class=" pull-right edit-icon icon-edit" ></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5 class="answer normal-heading">Albania, Tirane</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="answer normal-heading">Created 10/10/2015 - Starting 10/10/2015</h5>
+                                </div> 
+                                <div class="col-md-3">
+                                    <div class=" pull-right"><span class="icon-dollar"></span> <span class="dollar-number">400,800 EUR</span></div>
+                                </div>
+                            </div>
+                            <div class="row employer-rating">
+                                <div class="col-md-3 lc">
+                                  <span class="icon-check-sign emp-rating" ></span> <span class="answer emp-hedding">Employer rating</span> 
+                                    
+                                     <span star-rating ng-model="rating.ratingbox1" max="5" on-rating-select="rating.rateFunction(rating)"></span>
+                                        <span class="span-rating company-star">{{rating.ratingbox1}} </span>
+                                    
+                                </div>
+                                <div class="col-md-3 lb">
+                                    <span class="icon-6 "><span class="path1"></span><span class="path2"></span></span>   <span class="emp-interview">Interview Stages</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="answer ">Distribution</span>:<span class="box-answer"> 4 Recruiters, 122 CVs</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class=" pull-right "> <span class="answer" style="margin-left: -5px;">Last Activity</span>:  <span class="box-answer" style="letter-spacing: 1px;font-size: 15px;">2d</span>
+                                    </p>
+                                </div>
+                            </div>
+                           </div>
+                      </div>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                        
+                    </div>
+                    <footer class="box-footer">
+                    <div class="row">
+                                <div class="accordian-icon ">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseFour"></a>
+                                </div>
+                            </div>
+                    </footer>
+                    
                 </div>
                 </div>
                  <div class="row">
@@ -385,49 +407,37 @@
                          <img src="img/blankUser.jpg" width="150" height="150">
                           <p class="answer label-hd">John Smith</p>
                             <p class="label-dt">IT Director</p>
-                            <span ng-repeat="rating in ratings">
-                                <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                            </span>
+                             <span star-rating ng-model="rating.ratingimg1" max="5" on-rating-select="rating.rateFunction(rating)"></span>
                      </div>
                      <div class="col-md-2">
                         <img src="img/blankUser.jpg" width="150" height="150">
                             <p class="answer label-hd">John Smith</p>
                             <p class="label-dt">IT Director</p>
-                            <span ng-repeat="rating in ratings">
-                                <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                            </span>
+                            <span star-rating ng-model="rating.ratingimg2" max="5" on-rating-select="rating.rateFunction(rating)"></span>
                      </div>
                      <div class="col-md-2">
                         <img src="img/blankUser.jpg" width="150" height="150">
                          <p class="answer label-hd">John Smith</p>
                          <p class="label-dt">IT Director</p>
-                         <span ng-repeat="rating in ratings">
-                             <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                        </span>
+                         <span star-rating ng-model="rating.ratingimg3" max="5" on-rating-select="rating.rateFunction(rating)"></span>
                      </div>
                      <div class="col-md-2">
                      <img src="img/blankUser.jpg" width="150" height="150">
                          <p class="answer label-hd">John Smith</p>
                          <p class="label-dt">IT Director</p>
-                         <span ng-repeat="rating in ratings">
-                            <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                        </span>
+                        <span star-rating ng-model="rating.ratingimg4" max="5" on-rating-select="rating.rateFunction(rating)"></span>
                      </div>
                      <div class="col-md-2">
                      <img src="img/blankUser.jpg" width="150" height="150">
                          <p class="answer label-hd">John Smith</p>
                          <p class="label-dt">IT Director</p>
-                         <span ng-repeat="rating in ratings">
-                             <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                        </span>
+                         <span star-rating ng-model="rating.ratingimg5" max="5" on-rating-select="rating.rateFunction(rating)"></span>
                      </div>
                      <div class="col-md-2">
                      <img src="img/blankUser.jpg" width="150" height="150">
                          <p class="answer label-hd">John Smith</p>
                          <p class="label-dt">IT Director</p>
-                         <span ng-repeat="rating in ratings">
-                                <span star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></span>
-                        </span>
+                         <span star-rating ng-model="rating.ratingimg6" max="5" on-rating-select="rating.rateFunction(rating)"></span>
                      </div>
                 </div>
                 <div class="row">
@@ -478,9 +488,9 @@
                <ul class="footer-ul">
                      <li ><span class="">Follow Us</span></li>
                      <li ><span class=""><ul class="social-icons">
-                     <li ><span class="in-icon"></span></li>
-                    <li ><span class="google"></span></li>
-                     <li ><span class="facebook"></span></li>
+                     <li ><span class="icon-linkedin-logo"></span></li>
+                    <li ><span class="icon-google-plus-symbol"></span></li>
+                     <li ><i class="icon-facebook-logo-button"></i></li>
                     </ul></span></li>
                     </ul>
                 </div>
