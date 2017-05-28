@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body.slide-active {
   overflow-x: hidden; }
 
@@ -66,7 +65,7 @@ body.slide-active {
   border: 0 solid transparent;
   border-radius: 0;
   box-shadow: none;
-  transition: 0.5s;
+  transition: .5s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.5, 1); }
 
 .icon {
@@ -97,7 +96,8 @@ body.slide-active {
 
 .nav-ul {
   padding-top: 8px;
-  padding-bottom: 8px; }
+  padding-bottom: 8px;
+  margin-left: 75px; }
 
 .sec-name, .notification-smallimg {
   margin-top: 8px; }
@@ -155,10 +155,7 @@ input[type="search"]::-webkit-input-placeholder {
   top: 100%; }
 
 .dropdown .dropdown-menu li {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 4px 4px 0 0;
   background-color: #ffffff;
   padding: 7px 10px;
   border-bottom: 1px solid #ffffff;
@@ -197,7 +194,7 @@ input[type="search"]::-webkit-input-placeholder {
   font-size: 14px;
   color: #555555;
   font-family: Roboto;
-  /*padding-left: 18px */ }
+  /*padding-left: 18px*/ }
 
 section .section-hedding {
   font-weight: 600;
@@ -285,7 +282,7 @@ a:hover, a:focus {
   padding-left: 20px;
   padding-right: 20px;
   margin-left: 75px;
-  margin-top: 5px; }
+  margin-top: 0px; }
 
 section .p-content {
   margin-top: 30px; }
@@ -312,17 +309,41 @@ section .p-content {
 
 .box-footer .accordion-toggle:after {
   font-family: recvolt-icons;
-  content: "";
-  color: #999999; }
+  content: "\e90e";
+  color: #999999;
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+  -webkit-transform: rotate(0deg);
+  /* Safari */
+  transform: rotate(0deg);
+  /* Standard syntax */ }
 
 .box-footer .accordion-toggle.collapsed:after {
-  content: ""; }
+  content: "\e90e";
+  -webkit-transition: transform 0.3s;
+  /* Safari */
+  transition: transform 0.3s;
+  transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  /* IE 9 */
+  -webkit-transform: rotate(360deg);
+  /* Safari */
+  display: inline-block; }
 
 .panel-collapse.collapse.in + footer a.accordion-toggle:after {
-  content: ""; }
+  content: "\e90e";
+  -webkit-transition: transform 0.3s;
+  /* Safari */
+  transition: transform 0.3s;
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  /* IE 9 */
+  -webkit-transform: rotate(180deg);
+  /* Safari */
+  display: inline-block; }
 
 .panel-collapse.collapse + footer a.accordion-toggle:after {
-  content: ""; }
+  content: "\e90e"; }
 
 .dollar-icon {
   background: url(../img/icons/dallar40.png);
